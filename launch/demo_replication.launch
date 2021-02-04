@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="visual_input" default="false" />
+	<arg name="sim" default="false"/>
+	<arg name="live_camera" default="true"/>
+	
+	<arg name="smooth" default="false"/>
+	<arg name="filter" default="true"/>
+
+	<!-- Launch openpose -->
+	<group if="$(arg visual_input)" >
+		<include file="$(find pipeline_launch)/launch/pipeline_launch.launch">
+			<arg name="sim" default="$(arg sim)"/>
+			<arg name="live_camera" default="$(arg live_camera)"/>
+			<arg name="marker" value="true"/>
+		</include>
+	</group>
+
+	<!-- Launch movement detection node -->
+	<include file="$(find offline_trajectory_process)/launch/movement_detection.launch">
+		<arg name="smooth" default="$(arg smooth)"/>
+		<arg name="filter" default="$(arg filter)"/>
+	</include>
+
+	<!-- Launch action server for replication -->
+	<include file="$(find control_trajectory_execution)/launch/control_trajectory_execution.launch">
+		<arg name="smooth" default="$(arg smooth)"/>
+	</include>
+
+	<!-- Launch action client for replication -->
+	<node name="control_trajectory_execution_action_client" type="control_trajectory_execution_action_client" pkg="demo_replication" output="screen" respawn="false">
+		<rosparam file="$(find demo_replication)/config/control_trajectory_execution_action_client.yaml" command="load"/>
+	</node>
+	
+	<!-- UR3 trajectory points check -->
+	<include file="$(find ur3_trajectory_process)/launch/ur3_trajectory_process.launch">
+		<arg name="halt_motion" value="false"/>
+		<arg name="dynamic_calibration" value="false"/>
+	</include>
+
+	<!-- Trajectory tracking -->
+	<include file="$(find cartesian_trajectory_tracking)/launch/p_control.launch">
+	</include>
+
+
+</launch>
