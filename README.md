@@ -3,7 +3,7 @@
 ## Description
 This package launches the necessary nodes for a motion demonstration and replication by a UR3 cobot.
 
-<img src="https://github.com/Roboskel-Manipulation/demo_motion_demonstration/blob/main/pipeline_git.png" />
+<img src="https://github.com/Roboskel-Manipulation/demo_motion_demonstration/blob/main/pipeline-git.png" />
 
 ### Human Position Tracking
 The motion demonstration is based on visual input. An RGB-D camera is used for human tracking. [Openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) is used for recognising 2D human joint positions. The 3D position of the wrist is then acquired via the associated point cloud information. The 3D  coordinates are expressed in a static reference frame and then used as potential trajectory points for the control of the robot's end-effector (EE) position. This part of the pipeline is implemented in [openpose_3D_localization](https://github.com/Roboskel-Manipulation/openpose_3D_localization).
