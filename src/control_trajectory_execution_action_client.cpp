@@ -10,7 +10,6 @@ void callback(trajectory_custom_msgs::PointStampedArray waypoints){
 			waypoints.points[i].point.z += zOffset;
 		}
 		control_points.points.push_back(waypoints.points[i]);
-		ROS_INFO("Points transformed");
 	}
 	points_received = true;
 }

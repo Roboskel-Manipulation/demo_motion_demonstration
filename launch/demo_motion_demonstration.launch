@@ -3,7 +3,7 @@
 	<arg name="visual_input" default="false" />
 	<arg name="sim" default="false"/>
 	<arg name="live_camera" default="true"/>
-	<arg name="dynamic_calibration" default="false"/>
+	<arg name="dynamic_calibration" value="false"/>
 	
 	<arg name="smooth" default="false"/>
 	<arg name="filter" default="true"/>
