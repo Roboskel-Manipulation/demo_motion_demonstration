@@ -5,5 +5,5 @@
 #include <trajectory_custom_msgs/PointStampedArray.h>
 
 trajectory_custom_msgs::PointStampedArray control_points;
-bool points_received = false;
+bool points_received = false, dynamic_calibration;
 float xOffset, yOffset, zOffset;

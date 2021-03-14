@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(demo_replication)
+project(demo_motion_demonstration)
 
 
 find_package(catkin REQUIRED COMPONENTS
