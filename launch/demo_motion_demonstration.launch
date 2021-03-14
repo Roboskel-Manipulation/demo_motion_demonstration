@@ -29,9 +29,9 @@
 	</include>
 
 	<!-- Launch action client for replication -->
-	<node name="control_trajectory_execution_action_client" type="control_trajectory_execution_action_client" pkg="demo_replication" output="screen" respawn="false">
-		<rosparam file="$(find demo_replication)/config/control_trajectory_execution_action_client.yaml" command="load"/>
-		<param name="dynamic_calibration" default="$(arg dynamic_calibration)"/>
+	<node name="control_trajectory_execution_action_client" type="control_trajectory_execution_action_client" pkg="demo_motion_demonstration" output="screen" respawn="false">
+		<rosparam file="$(find demo_motion_demonstration)/config/control_trajectory_execution_action_client.yaml" command="load"/>
+		<param name="dynamic_calibration" type="bool" value="$(arg dynamic_calibration)"/>
 	</node>
 	
 	<!-- UR3 trajectory points check -->

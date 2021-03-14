@@ -3,13 +3,13 @@
 
 void callback(trajectory_custom_msgs::PointStampedArray waypoints){
 	ROS_INFO("Received the points");
-	if (not dynamic_calibration){
-		for (int i=0; i<waypoints.points.size(); i++){
+	for (int i=0; i<waypoints.points.size(); i++){
+		if (not dynamic_calibration){
 			waypoints.points[i].point.x += xOffset;
 			waypoints.points[i].point.y += yOffset;
 			waypoints.points[i].point.z += zOffset;
-			control_points.points.push_back(waypoints.points[i]);
 		}
+		control_points.points.push_back(waypoints.points[i]);
 		ROS_INFO("Points transformed");
 	}
 	points_received = true;
