@@ -3,7 +3,7 @@
 	<arg name="visual_input" default="false" />
 	<arg name="sim" default="false"/>
 	<arg name="live_camera" default="true"/>
-	
+
 	<arg name="smooth" default="false"/>
 
 	<!-- Launch openpose -->
