@@ -4,13 +4,7 @@
 void callback(trajectory_custom_msgs::PointStampedArray waypoints){
 	ROS_INFO("Received the points");
 	for (int i=0; i<waypoints.points.size(); i++){
-		if (not dynamic_calibration){
-			waypoints.points[i].point.x += xOffset;
-			waypoints.points[i].point.y += yOffset;
-			waypoints.points[i].point.z += zOffset;
-		}
 		control_points.points.push_back(waypoints.points[i]);
-		ROS_INFO("Points transformed");
 	}
 	points_received = true;
 }
@@ -32,14 +26,6 @@ int main(int argc, char** argv){
 	ros::init(argc, argv, "control_trajectory_execution_action_client");
 	ros::AsyncSpinner spinner(2);
 	ros::NodeHandle nh;
-
-	nh.param("control_trajectory_execution_action_client/dynamic_calibration", dynamic_calibration, true);
-
-	if (not dynamic_calibration){
-		nh.param("control_trajectory_execution_action_client/xOffset", xOffset, 0.0f);
-		nh.param("control_trajectory_execution_action_client/yOffset", yOffset, 0.0f);
-		nh.param("control_trajectory_execution_action_client/zOffset", zOffset, 0.0f);
-	}
 
 	spinner.start();
 	actionlib::SimpleActionClient<control_trajectory_execution::control_trackingAction>	ac("control_tracking", true);

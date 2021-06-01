@@ -3,10 +3,8 @@
 	<arg name="visual_input" default="false" />
 	<arg name="sim" default="false"/>
 	<arg name="live_camera" default="true"/>
-	<arg name="dynamic_calibration" default="false"/>
 	
 	<arg name="smooth" default="false"/>
-	<arg name="filter" default="true"/>
 
 	<!-- Launch openpose -->
 	<group if="$(arg visual_input)" >
@@ -20,7 +18,6 @@
 	<!-- Launch movement detection node -->
 	<include file="$(find offline_trajectory_process)/launch/movement_detection.launch">
 		<arg name="smooth" default="$(arg smooth)"/>
-		<arg name="filter" default="$(arg filter)"/>
 	</include>
 
 	<!-- Launch action server for replication -->
@@ -31,13 +28,11 @@
 	<!-- Launch action client for replication -->
 	<node name="control_trajectory_execution_action_client" type="control_trajectory_execution_action_client" pkg="demo_motion_demonstration" output="screen" respawn="false">
 		<rosparam file="$(find demo_motion_demonstration)/config/control_trajectory_execution_action_client.yaml" command="load"/>
-		<param name="dynamic_calibration" type="bool" value="$(arg dynamic_calibration)"/>
 	</node>
 	
 	<!-- UR3 trajectory points check -->
 	<include file="$(find ur3_trajectory_process)/launch/ur3_trajectory_process.launch">
 		<arg name="halt_motion" value="false"/>
-		<arg name="dynamic_calibration" default="$(arg dynamic_calibration)"/>
 	</include>
 
 	<!-- Trajectory tracking -->
