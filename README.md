@@ -1,4 +1,4 @@
-# Motion demonstration and replication by a UR3 cobot
+# demo_motion_demonstration
 
 ## Description
 This package launches the necessary nodes for a motion demonstration and replication by a UR3 cobot.
