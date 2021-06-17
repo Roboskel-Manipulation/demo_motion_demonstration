@@ -32,7 +32,6 @@ Input modality
 NOTE: sim and live_camera arguments need to be set only if visual_input is set to true.
 
 Trajectory preprocessing
-* filter: True if removing points corresponding to stagnation.
 * smooth: True is smoothing the trajectory using Bezier Curves.
 
 
