@@ -3,7 +3,6 @@ project(demo_motion_demonstration)
 
 
 find_package(catkin REQUIRED COMPONENTS
-  movement_detection
   roscpp
   rospy
   control_trajectory_execution
