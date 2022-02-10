@@ -34,5 +34,17 @@ NOTE: sim and live_camera arguments need to be set only if visual_input is set t
 Trajectory preprocessing
 * smooth: True is smoothing the trajectory using Bezier Curves.
 
+## Citation
+If you want to cite this work, please use the following bibtex
+```python
+@inproceedings{dagioglou2021smoothing,
+  title={Smoothing of human movements recorded by a single RGB-D camera for robot demonstrations},
+  author={Dagioglou, Maria and Tsitos, Athanasios C and Smarnakis, Aristeidis and Karkaletsis, Vangelis},
+  booktitle={The 14th PErvasive Technologies Related to Assistive Environments Conference},
+  pages={496--501},
+  year={2021}
+}
+```
+
 
 
